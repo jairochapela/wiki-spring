@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Wiki Personal</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Inicio</a> |
+        <a href="/index">Índice</a> |
+        <a href="/about">Acerca de</a>
+    </nav>
+
+    <h1 th:text="${doc.titulo}"></h1>
+    <p th:text="${doc.contenido}"></p>
+
+    <hr>
+
+    <a href="/editar/" th:href="'/editar/' + ${doc.titulo}">Editar esta página</a>
+
+    <footer>
+        <p>&copy; 2026 Mi Wiki Personal</p>
+    </footer>
+</body>
+</html>
