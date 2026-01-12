@@ -23,6 +23,7 @@ public class ControladorPagina {
     @GetMapping("/{nombre}")
     public String mostrarPagina(@PathVariable String nombre, Model modeloUI) {
         doc = Documento.cargar(nombre);
+        doc.setContenido(ProcesadorMarcado.procesar(doc.getContenido()));
         modeloUI.addAttribute("doc", doc);
         return "pagina";
     }
