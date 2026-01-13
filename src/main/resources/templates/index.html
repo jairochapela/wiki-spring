@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Wiki Personal</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Inicio</a> |
+        <a href="/index">Índice</a> |
+        <a href="/about">Acerca de</a>
+    </nav>
+
+    <h1>Índice de Páginas</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Última Modificación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="f : ${ficheros}">
+                <td><a th:href="'/' + ${f}" th:text="${f}"></a></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer>
+        <p>&copy; 2026 Mi Wiki Personal</p>
+    </footer>
+</body>
+</html>

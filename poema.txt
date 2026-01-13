@@ -1,6 +1,0 @@
-# Un poema
-
-Las **rosas** son rojas
-Las violetas *azul*
-[[Java]] es muy duro
-Y mañana es viernes
