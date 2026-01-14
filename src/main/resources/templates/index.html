@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Wiki Personal</title>
-</head>
+<head th:insert="~{base :: head}"></head>
 <body>
-    <nav>
-        <a href="/">Inicio</a> |
-        <a href="/index">Índice</a> |
-        <a href="/about">Acerca de</a>
-    </nav>
+    <nav th:insert="~{base :: navegacion}"></nav>
 
     <h1>Índice de Páginas</h1>
 
@@ -23,14 +15,12 @@
         </thead>
         <tbody>
             <tr th:each="f : ${entradas}">
-                <td><a th:href="'/' + ${f.getRuta()}" th:text="${f.getRuta()}"></a></td>
+                <td><a th:href="'/pagina/' + ${f.getRuta()}" th:text="${f.getRuta()}"></a></td>
                 <td><span th:text="${#dates.format(f.getFechaModificacion(), 'dd/MM/yyyy HH:mm')}"></span></td>
             </tr>
         </tbody>
     </table>
 
-    <footer>
-        <p>&copy; 2026 Mi Wiki Personal</p>
-    </footer>
+    <footer th:insert="~{base :: pie}"></footer>
 </body>
 </html>

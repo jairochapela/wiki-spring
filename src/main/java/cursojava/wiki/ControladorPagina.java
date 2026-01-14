@@ -22,7 +22,7 @@ public class ControladorPagina {
 
     @GetMapping("/")
     public String mostrarPortada(Model modeloUI) {
-        return "redirect:/Portada";
+        return "redirect:/pagina/Portada";
     }
 
     @GetMapping("/index")
@@ -77,7 +77,7 @@ public class ControladorPagina {
     /**
      * Mostrar la página solicitada.
      */
-    @GetMapping("/{nombre}")
+    @GetMapping("/pagina/{nombre}")
     public String mostrarPagina(@PathVariable String nombre, Model modeloUI) {
         doc = Documento.cargar(nombre);
         doc.setContenido(ProcesadorMarcado.procesar(doc.getContenido()));
@@ -105,7 +105,7 @@ public class ControladorPagina {
     public String guardarPagina(@PathVariable String nombre, Documento documento, Model modeloUI) {
         modeloUI.addAttribute("doc", documento);
         documento.guardar();
-        return "redirect:/" + nombre;
+        return "redirect:/pagina/" + nombre;
     }
 
 }

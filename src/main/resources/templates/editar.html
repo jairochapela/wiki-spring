@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<head th:replace="~{base :: head}"></head>
 <body>
+    <nav th:insert="~{base :: navegacion}"></nav>
+
     <form action="" method="post">
         <label for="titulo">Título:</label><br>
         <input type="text" id="titulo" name="titulo" th:value="${doc.titulo}"><br><br>
@@ -13,5 +11,7 @@
         <textarea id="contenido" name="contenido" rows="10" cols="30" th:text="${doc.contenido}"></textarea><br><br>
         <input type="submit" value="Guardar">
     </form>
+
+    <footer th:insert="~{base :: pie}"></footer>
 </body>
 </html>

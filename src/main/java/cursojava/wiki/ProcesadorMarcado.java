@@ -19,7 +19,7 @@ public class ProcesadorMarcado {
         texto = texto.replaceAll("\\*(.+)\\*", "<em>$1</em>");
 
         // Enlaces a páginas [[pagina]] -> <a href="/pagina">pagina</a>
-        texto = texto.replaceAll("\\[\\[(.+)\\]\\]", "<a href=\"/$1\">$1</a>");
+        texto = texto.replaceAll("\\[\\[(.+)\\]\\]", "<a href=\"/pagina/$1\">$1</a>");
 
         // Separamos el texto original en líneas, dividiendo por \n
         String[] lineas = texto.split("\n");
