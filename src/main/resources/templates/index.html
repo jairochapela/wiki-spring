@@ -17,14 +17,14 @@
     <table>
         <thead>
             <tr>
-                <th>Título</th>
-                <th>Última Modificación</th>
+                <th><a href="?orden=nombre">Nombre</a></th>
+                <th><a href="?orden=fecha">Última Modificación</a></th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="f : ${ficheros}">
-                <td><a th:href="'/' + ${f}" th:text="${f}"></a></td>
-                <td></td>
+            <tr th:each="f : ${entradas}">
+                <td><a th:href="'/' + ${f.getRuta()}" th:text="${f.getRuta()}"></a></td>
+                <td><span th:text="${#dates.format(f.getFechaModificacion(), 'dd/MM/yyyy HH:mm')}"></span></td>
             </tr>
         </tbody>
     </table>

@@ -1,12 +1,18 @@
 package cursojava.wiki;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ControladorPagina {
@@ -20,11 +26,51 @@ public class ControladorPagina {
     }
 
     @GetMapping("/index")
-    public String mostrarIndice(Model modeloUI) {
+    public String mostrarIndice(Model modeloUI, @RequestParam(required = false) String orden) {
         File carpetaDatos = new File("./data");
-        //File[] ficherosTxt = carpetaDatos.listFiles();
-        String[] nombresFicheros = carpetaDatos.list();
-        modeloUI.addAttribute("ficheros", nombresFicheros);
+        File[] ficherosTxt = carpetaDatos.listFiles();
+        List<EntradaIndice> entradas = new ArrayList<>();
+
+        
+        // Transformamos los objetos File en objetos EntradaIndice
+        for (int i = 0; i < ficherosTxt.length; i++) {
+            entradas.add(new EntradaIndice(
+                ficherosTxt[i].getName().replaceFirst("\\.txt$", ""),
+                ficherosTxt[i].getName(),
+                new Date(ficherosTxt[i].lastModified())
+            ));
+        }
+
+        // Si no se especifica orden, asumimos ordenar por nombre
+        if (orden == null) {
+            orden = "nombre";
+        }
+
+        switch (orden) {
+            case "fecha":
+                /*Collections.sort(entradas, new Comparator<EntradaIndice>() {
+                    @Override
+                    public int compare(EntradaIndice e1, EntradaIndice e2) {
+                        return e2.getFechaModificacion().compareTo(e1.getFechaModificacion());
+                    }
+                }); */
+                Collections.sort(entradas, (e1, e2) -> e2.getFechaModificacion().compareTo(e1.getFechaModificacion()));               
+                break;
+
+            case "nombre":
+                /*Collections.sort(entradas, new Comparator<EntradaIndice>() {
+                    @Override
+                    public int compare(EntradaIndice e1, EntradaIndice e2) {
+                        return e1.getNombre().compareToIgnoreCase(e2.getNombre());
+                    }
+                }); */
+                Collections.sort(entradas, (e1, e2) -> e1.getNombre().compareToIgnoreCase(e2.getNombre()));
+                break;
+        }
+
+
+        //String[] nombresFicheros = carpetaDatos.list();
+        modeloUI.addAttribute("entradas", entradas);
         return "index";
     }
 
