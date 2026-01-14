@@ -4,14 +4,15 @@
 <body>
     <nav th:insert="~{base :: navegacion}"></nav>
 
-    <form action="" method="post">
-        <label for="titulo">Título:</label><br>
-        <input type="text" id="titulo" name="titulo" th:value="${doc.titulo}"><br><br>
-        <label for="contenido">Contenido:</label><br>
-        <textarea id="contenido" name="contenido" rows="10" cols="30" th:text="${doc.contenido}"></textarea><br><br>
-        <input type="submit" value="Guardar">
+    <form class="form" action="" method="post">
+        <label for="titulo" class="form-label">Título:</label><br>
+        <input type="text" id="titulo" name="titulo" th:value="${doc.titulo}" class="form-control"><br><br>
+        <label for="contenido" class="form-label">Contenido:</label><br>
+        <textarea id="contenido" name="contenido" rows="10" cols="30" th:text="${doc.contenido}" class="form-control"></textarea><br><br>
+        <input type="submit" value="Guardar" class="btn btn-primary">
     </form>
 
     <footer th:insert="~{base :: pie}"></footer>
+    <script th:insert="~{base :: script}"></script>
 </body>
 </html>

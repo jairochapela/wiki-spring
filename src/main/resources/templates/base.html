@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Wiki Personal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="/estilos.css">
 </head>
 <body>
-    <nav th:fragment="navegacion">
-        <a th:href="@{/}">Inicio</a> |
-        <a th:href="@{/index}">Índice</a> |
-        <a th:href="@{/pagina/about}">Acerca de</a>
+    <nav th:fragment="navegacion" class="navbar navbar-light bg-light">
+        <a th:href="@{/}" class="navbar-brand">Inicio</a> |
+        <a th:href="@{/index}" class="nav-link">Índice</a> |
+        <a th:href="@{/pagina/about}" class="nav-link">Acerca de</a>
     </nav>
 
 
-    <footer th:fragment="pie">
+    <footer th:fragment="pie" class="footer">
         <p>&copy; 2026 Mi Wiki Personal &dash; Jairo Chapela</p>
     </footer>
+    <script th:fragment="script" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
